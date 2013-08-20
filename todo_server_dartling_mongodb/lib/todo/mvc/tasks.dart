@@ -12,9 +12,7 @@ class Task extends TaskGen {
   // begin: added by hand
   Task.fromDb(Concept concept, Map value): super(concept) {
     title = value['title'];
-    //completed = value['completed'] == 'true' ? true : false;
     completed = value['completed'];
-    //updated = DateTime.parse(value['updated']);
     updated = value['updated'];
   }
 
