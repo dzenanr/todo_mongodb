@@ -18,19 +18,16 @@ Client
 
 Server
 
-+ there is only one version of server: one with dartling (todo_server_dartling_mongodb)
-+ when it starts, server loads data from MongoDB to the model in main memory
++ when server starts, it loads data from MongoDB to the model in main memory
 + when the model in main memory changes, the database is updated
 + server programming uses the model in main memory and not the database
-+ todo_server_dartling_mongodb reacts to changes in the model by updating MongoDB
 
 Use
 
-0. no need to create separately a new database with the todo name
 1. run server first (
    todo_server_dartling_mongodb/bin/server.dart) in Dart Editor;
    it runs when you see in the server.dart tab in Dart Editor:
-   Server at http://127.0.0.1:8080
+   Server at http://127.0.0.1:8080;
    if it does not run, use Run/Manage Launches
 2. run client (todo_client_idb/web/app.html) in Dartium
 3. run client as JavaScript (todo_client_idb/web/app.html) in Chrome
