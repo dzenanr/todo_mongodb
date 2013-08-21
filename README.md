@@ -24,6 +24,7 @@ Server
 
 Use
 
+0. No need to create a database before 1
 1. run server first (
    todo_server_dartling_mongodb/bin/server.dart) in Dart Editor;
    it runs when you see in the server.dart tab in Dart Editor:
