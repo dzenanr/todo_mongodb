@@ -3,15 +3,11 @@ Use
 + when it starts, server loads data from MySQL to the model in main memory
 + when the model in main memory changes, the database is updated
 + server programming uses the model in main memory and not the database
-+ todo_server_dartling_mysql reacts to changes in the model by updating mysql
-
-a. in MySQL Workbench create a new schema (database) with the todo name
-b. run tests in test/mysql_test.dart to create tables
 
 0. No need to create a database before 1
 1. run server first (bin/server.dart) in Dart Editor;
    it runs when you see in the server.dart tab in Dart Editor:
-   Listening for GET and POST on http://127.0.0.1:8080;
+   Server at http://127.0.0.1:8080;
    if it does not run, use Run/Manage Launches
 2. run client (todo_client_idb/web/app.html) in Dartium
 3. run client as JavaScript (todo_client_idb/web/app.html) in Chrome
