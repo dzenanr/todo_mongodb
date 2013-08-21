@@ -26,12 +26,10 @@ testTasks(Db db, DbCollection tasks) {
 main() {
   Db db = new Db('${DEFAULT_URI}${DB_NAME}');
   DbCollection tasks;
-  db.open()
-  .then((_) {
+  db.open().then((_) {
     tasks = db.collection(COLLECTION_NAME);
     tasks.remove();
-  })
-  .then((_) {
+  }).then((_) {
     var today = new DateTime.now();
     tasks.insertAll(
       [
@@ -40,8 +38,7 @@ main() {
         {"title": "c", "completed": false, "updated": today}
       ]
     );
-  })
-  .then((_) {
+  }).then((_) {
     testTasks(db, tasks);
     tasks.find().toList().then((list) {
       print('*** all tasks ***');
