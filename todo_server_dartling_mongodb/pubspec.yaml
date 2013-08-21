@@ -1,7 +1,7 @@
-name: todo_server_dartling_mysql
+name: todo_server_dartling_mongodb
 version: 0.0.1
 author: Dzenan Ridjanovic <dzenanr@gmail.com>
-description: To learn how to use MySQL and client-server communication.
+description: To learn how to use MongoDB and client-server communication.
 homepage: http://ondart.me/
 dependencies:
   dartling:
