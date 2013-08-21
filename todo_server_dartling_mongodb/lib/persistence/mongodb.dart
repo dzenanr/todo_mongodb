@@ -30,7 +30,7 @@ class TodoDb implements ActionReactionApi {
       taskCollection.load().then((_) {
         completer.complete();
       });
-    });
+    }).catchError(print);
     return completer.future;
   }
 
@@ -40,11 +40,11 @@ class TodoDb implements ActionReactionApi {
 
   react(ActionApi action) {
     if (action is AddAction) {
-      taskCollection.insert(action.entity);
+      taskCollection.insert((action as AddAction).entity);
     } else if (action is RemoveAction) {
-      taskCollection.delete(action.entity);
+      taskCollection.delete((action as RemoveAction).entity);
     } else if (action is SetAttributeAction) {
-      taskCollection.update(action.entity);
+      taskCollection.update((action as SetAttributeAction).entity);
     }
   }
 }
