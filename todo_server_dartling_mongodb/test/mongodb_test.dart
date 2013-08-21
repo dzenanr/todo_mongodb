@@ -27,23 +27,23 @@ main() {
   Db db = new Db('${DEFAULT_URI}${DB_NAME}');
   DbCollection tasks;
   db.open().then((_) {
-    //db.dropCollection(COLLECTION_NAME);
     tasks = db.collection(COLLECTION_NAME);
     var today = new DateTime.now();
-    tasks.insertAll(
-      [
-      {"title": "a", "completed": false, "updated": today},
-      {"title": "b", "completed": true,  "updated": today},
-      {"title": "c", "completed": false, "updated": today}
-      ]
-    ).then((_) {
+    tasks.remove()
+    .then((_) {
+      tasks.insertAll(
+        [
+          {"title": "a", "completed": false, "updated": today},
+          {"title": "b", "completed": true,  "updated": today},
+          {"title": "c", "completed": false, "updated": today}
+        ]
+      );
+    })
+    .then((_) {
       testTasks(db, tasks);
       tasks.find().toList().then((list) {
         print('*** all tasks ***');
         print(list);
-        db.drop().then((_){
-          db.close();
-        });
       });
     });
   });
