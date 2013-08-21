@@ -2,7 +2,7 @@
 
 import "package:dartling/dartling.dart";
 
-import 'package:todo_server_dartling_mysql/todo_mvc.dart';
+import 'package:todo_server_dartling_mongodb/todo_mvc.dart';
 
 genCode() {
   var repo = new Repo();
