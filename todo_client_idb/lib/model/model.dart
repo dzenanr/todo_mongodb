@@ -153,6 +153,6 @@ class Tasks {
   }
 
   String toJsonString() {
-    return convert.JSON.encode(toJson());
+    return JSON.encode(toJson());
   }
 }
