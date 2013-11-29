@@ -25,7 +25,7 @@ Server
 Use
 
 1. no need to create a database before 2;
-   however, do not forget to start the MongoDB server
+   however, do not forget to start the MongoDB server (mongod; Ctrl-C to stop it)
 2. run bin/server.dart in Dart Editor;
    it runs when you see in the server.dart tab in Dart Editor:
    Server at http://127.0.0.1:8080;
