@@ -3,7 +3,7 @@
 Project based on
 [Target 11: Use IndexedDB](http://www.dartlang.org/docs/tutorials/indexeddb/),
 [Using Dart with JSON Web Services](http://www.dartlang.org/articles/json-web-service/),
-[dartling] (https://github.com/dzenanr/dartling)
+[dartling] (http://pub.dartlang.org/packages/dartling)
 and
 [mongo_dart: MongoDB driver for Dart](http://pub.dartlang.org/packages/mongo_dart).
 

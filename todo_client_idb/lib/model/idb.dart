@@ -66,11 +66,8 @@ class TasksStore {
     for (var serverTask in serverTasks) {
       if (clientTasks.contains(serverTask.title)) {
         var clientTask = clientTasks.find(serverTask.title);
-        if (clientTask.updated.millisecondsSinceEpoch <
-            serverTask.updated.millisecondsSinceEpoch) {
-          clientTask.completed = serverTask.completed;
-          clientTask.updated = serverTask.updated;
-        }
+        clientTask.completed = serverTask.completed;
+        clientTask.updated = serverTask.updated;
       } else {
         clientTasks.add(serverTask);
       }
