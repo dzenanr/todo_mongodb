@@ -12,7 +12,7 @@ class TasksDb {
 
   Future open() {
     return window.indexedDB
-      .open('tasksDb03',version: 1, onUpgradeNeeded: _initDb)
+      .open('tasksDb03', version: 1, onUpgradeNeeded: _initDb)
       .then(_loadDb);
   }
 
