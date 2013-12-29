@@ -41,6 +41,9 @@ Use
    2. add, remove and update tasks (saved locally in IndexedDB by default)
    3. To server to integrate local data to server
 
+Paper
+
+[Dart Server with Dartling and MongoDB](https://docs.google.com/document/d/12kinDvm87QpeaiB8EcCL5AZ1Sr_ugYDG9HtTMeLnZ1o/edit?usp=sharing)
 
 
 
