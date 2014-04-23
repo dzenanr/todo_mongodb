@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:convert' as convert;
 
 import 'package:dartling/dartling.dart';
 import 'package:todo_server_dartling_mongodb/todo_mvc.dart';
@@ -15,19 +14,20 @@ const int PORT = 8080;
 
 TodoDb db;
 
-_integrateDataFromClient(List<Map> jsonList) {
-  var clientTasks = new Tasks.fromJson(db.tasks.concept, jsonList);
-  var serverTaskList = db.tasks.toList();
-  for (var serverTask in serverTaskList) {
+_integrateDataFromClient(String json) {
+  var clientTasks = new Tasks(db.tasks.concept);
+  clientTasks.fromJson(json);
+  var serverTasks = db.tasks;
+  for (var serverTask in serverTasks.toList()) {
     var clientTask =
         clientTasks.singleWhereAttributeId('title', serverTask.title);
     if (clientTask == null) {
-      new RemoveAction(db.session, db.tasks, serverTask).doit();
+      new RemoveAction(db.session, serverTasks, serverTask).doit();
     }
   }
   for (var clientTask in clientTasks) {
     var serverTask =
-        db.tasks.singleWhereAttributeId('title', clientTask.title);
+        serverTasks.singleWhereAttributeId('title', clientTask.title);
     if (serverTask != null) {
       if (serverTask.updated.millisecondsSinceEpoch <
           clientTask.updated.millisecondsSinceEpoch) {
@@ -35,7 +35,7 @@ _integrateDataFromClient(List<Map> jsonList) {
           db.session, serverTask, 'completed', clientTask.completed).doit();
       }
     } else {
-      new AddAction(db.session, db.tasks, clientTask).doit();
+      new AddAction(db.session, serverTasks, clientTask).doit();
     }
   }
 }
@@ -69,20 +69,18 @@ void handleGet(HttpRequest request) {
   addCorsHeaders(res);
   res.headers.contentType =
       new ContentType("application", "json", charset: 'utf-8');
-  List<Map> jsonList = db.tasks.toJson();
-  String jsonString = convert.JSON.encode(jsonList);
-  print('JSON list in GET: ${jsonList}');
-  res.write(jsonString);
+  String json = db.tasks.toJson();
+  print('JSON list in GET: ${json}');
+  res.write(json);
   res.close();
 }
 
 void handlePost(HttpRequest request) {
   print('${request.method}: ${request.uri.path}');
   request.listen((List<int> buffer) {
-    var jsonString = new String.fromCharCodes(buffer);
-    List<Map> jsonList = convert.JSON.decode(jsonString);
-    print('JSON list in POST: ${jsonList}');
-    _integrateDataFromClient(jsonList);
+    var json = new String.fromCharCodes(buffer);
+    print('JSON list in POST: ${json}');
+    _integrateDataFromClient(json);
   },
   onError: print);
 }

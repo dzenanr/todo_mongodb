@@ -3,8 +3,7 @@ version: 0.0.1
 author: Dzenan Ridjanovic <dzenanr@gmail.com>
 description: To learn how to use MongoDB and client-server communication.
 homepage: http://ondart.me/
-environment:
-  sdk: '>=0.8.10+8 <2.0.0'
 dependencies:
-  dartling: '>=1.0.3 <2.0.0'
+  dartling:
+    git: https://github.com/dzenanr/dartling.git
   mongo_dart: any
