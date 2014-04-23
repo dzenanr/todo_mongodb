@@ -66,11 +66,6 @@ class Tasks extends TasksGen {
   Tasks(Concept concept) : super(concept);
 
   // begin: added by hand
-  Tasks.fromJson(Concept concept, List<Map> jsonList): super(concept) {
-    for (var taskMap in jsonList) {
-      add(new Task.fromJson(concept, taskMap));
-    }
-  }
 
   Tasks get completed => selectWhere((task) => task.completed);
   Tasks get left => selectWhere((task) => task.left);
