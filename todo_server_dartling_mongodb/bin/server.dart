@@ -16,7 +16,7 @@ TodoDb db;
 
 _integrateDataFromClient(String json) {
   var clientTasks = new Tasks(db.tasks.concept);
-  clientTasks.fromJson(json);
+  clientTasks.fromJson(json); 
   var serverTasks = db.tasks;
   for (var serverTask in serverTasks.toList()) {
     var clientTask =

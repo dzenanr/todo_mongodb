@@ -4,10 +4,10 @@ class TasksDb {
   static const String TASKS_STORE = 'tasksStore';
   static const String TITLE_INDEX = 'titleIndex';
 
-  Database _db;
+  ixdb.Database _db;
   TasksStore _tasksStore;
 
-  Database get db => _db;
+  ixdb.Database get db => _db;
   TasksStore get tasksStore => _tasksStore;
 
   Future open() {
@@ -16,13 +16,13 @@ class TasksDb {
       .then(_loadDb);
   }
 
-  void _initDb(VersionChangeEvent e) {
-    var db = (e.target as Request).result;
+  void _initDb(ixdb.VersionChangeEvent e) {
+    var db = (e.target as ixdb.Request).result;
     var store = db.createObjectStore(TASKS_STORE, autoIncrement: true);
     store.createIndex(TITLE_INDEX, 'title', unique: true);
   }
 
-  Future<int> _loadDb(Database db) {
+  Future<int> _loadDb(ixdb.Database db) {
     _db = db;
     _tasksStore = new TasksStore(this);
     return _tasksStore.load();

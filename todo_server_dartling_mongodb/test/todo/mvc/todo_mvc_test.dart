@@ -60,11 +60,19 @@ testTodoMvc(Repo repo, String domainCode, String modelCode) {
       modelEntries.displayJson();
     });
     test('From JSON to Task Model', () {
+      var json = modelEntries.toJson(); 
+      modelEntries.clear(); 
+      expect(modelEntries.isEmpty, isTrue); 
+      modelEntries.fromJson(json); 
+      expect(modelEntries.isEmpty, isFalse);
+      modelEntries.display();     
+      /*
       tasks.clear();
       expect(tasks.isEmpty, isTrue);
       modelEntries.fromJsonToData();
       expect(tasks.isEmpty, isFalse);
       tasks.display(title:'From JSON to Task Model');
+       */
     });
 
     test('Add Task Required Title Error', () {
