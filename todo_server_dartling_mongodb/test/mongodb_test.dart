@@ -1,4 +1,4 @@
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 import 'package:mongo_dart/mongo_dart.dart';
 
 const String DEFAULT_URI = 'mongodb://127.0.0.1/';
