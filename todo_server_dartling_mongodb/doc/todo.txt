@@ -1,6 +1,8 @@
 To Do
 
 - test more MongoDB
+- write a more complete version of a paper based on 
+  https://docs.google.com/document/d/12kinDvm87QpeaiB8EcCL5AZ1Sr_ugYDG9HtTMeLnZ1o/edit?usp=sharing
 
 
 
